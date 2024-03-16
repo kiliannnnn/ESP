@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CMS</title>
-    <script src="vendor/main.js"></script>
-    <script src="vendor/components/header.js"></script>
+
+    <!-- <HTML-to-DOM> -->
+    <script type='text/javascript' src='vendor/tagsTraductor/dom-parser.js'></script>
+    <script type='text/javascript' src='vendor/tagsTraductor/htmltodom.js'></script>
+    <!-- </HTML-to-DOM> -->
+
+    <script src="vendor/config.js"></script>
+    <script src="content/main.js"></script>
+    <script src="content/components/main.js"></script>
+    <script src="content/components/component.js"></script>
+    <script src="content/components/header.js"></script>
+    <script src="content/components/footer.js"></script>
+
     <noscript>Javascript is required to use this tool. Please enable it.</noscript>
 </head>
-<body>
-    <div id="app"></div>
+
+<body id="app">
+    <button onclick="download('file text', 'myfilename.txt', 'text/plain')">Create file</button>
 </body>
+
 </html>

@@ -1,0 +1,86 @@
+/* body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+}
+
+#editor {
+    height: 300px;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+} */
+
+/* 
+
+.textFormatting,
+.tags {
+    display: flex;
+}
+
+.textFormatting button,
+.tags button,
+.dropdown-content button {
+    padding: 8px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.dropdown-content button:hover {
+    background-color: #ddd;
+}
+*/
+
+.editor-container {
+    margin-top: 50px;
+    padding: 10px;
+}
+#editor {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f1f1f1;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

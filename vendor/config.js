@@ -1,4 +1,6 @@
 var config = {
-    productIndexPath: "content/index.html",
-    productIndexExists: false,
-};
+    "product": {
+        "path": "content",
+        "indexExists": "false"
+    }
+}
