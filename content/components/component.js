@@ -1,10 +1,11 @@
 class Component {
-    render(targetElement) {
-        targetElement.appendChild(this.element);
+    render(container) {
+        container.appendChild(this.element);
     }
-    remove(targetElement) {
-        targetElement.element.remove();
-    }
+    
+    // remove(container) {
+    //     container.removeChild(this.element);
+    // }
 
     watch() {
         const debug = document.getElementsByName("debug");

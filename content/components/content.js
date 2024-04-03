@@ -30,7 +30,7 @@ class FreshInstall extends Component {
         node_2.appendChild(node_5);
 
         var node_6 = document.createElement('P');
-        node_6.innerText = "Please, note that this app uses your navigator cache to store data as there is no other way to do so with the same constraints.";
+        node_6.innerText = "Please, note that this app uses your browser cache to store data as there is no other way to do so with the same constraints.";
         node_2.appendChild(node_6);
 
         var node_7 = document.createElement('P');
@@ -41,6 +41,7 @@ class FreshInstall extends Component {
         node_2.appendChild(node_param);
 
         var node_45 = document.createElement('BUTTON');
+        node_45.id = 'FreshInstallBtn';
         node_45.setAttribute('class', 'width-100 margin-auto');
         node_2.appendChild(node_45);
 
@@ -48,6 +49,7 @@ class FreshInstall extends Component {
         node_45.appendChild(node_46);
 
         this.element = document.createElement('section');
+        this.element.id = 'FreshInstall';
         this.element.appendChild(node_1);
     }
 

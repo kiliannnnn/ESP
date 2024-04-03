@@ -52,10 +52,13 @@
 if (localStorage.getItem('config') == null) {
     var config = {
         options: {
-            freshInstall: true,
             debug: 'no-debug',// "no-debug" | "debug" | "verbose"
             mode: 'light',// "light" | "complete"
             editor: 'basic',// "basic" | "advanced"
+        },
+        workspace: {
+            freshInstall: true,
+            componentPriority: ["FreshInstall"],// default value ["FreshInstall"] | default workspace ["Header", "Content", "PagesManager", "Footer"]
         }
     }
 }
