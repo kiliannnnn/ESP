@@ -6,23 +6,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CMS</title>
 
-    <!-- <HTML-to-DOM> -->
+    <!-- HTML-to-DOM -->
     <script type='text/javascript' src='vendor/tagsTraductor/dom-parser.js'></script>
     <script type='text/javascript' src='vendor/tagsTraductor/htmltodom.js'></script>
-    <!-- </HTML-to-DOM> -->
+    <!-- HTML-to-DOM -->
 
+    <!-- base -->
     <script src="vendor/config.js"></script>
     <script src="content/main.js"></script>
+    <!-- base -->
+
+    <!-- components mother class & rendering -->
     <script src="content/components/main.js"></script>
     <script src="content/components/component.js"></script>
+    <!-- components mother class & rendering -->
+
+    <!-- components -->
     <script src="content/components/header.js"></script>
     <script src="content/components/footer.js"></script>
+    <script src="content/components/content.js"></script>
+    <!-- components -->
+
+    <link rel="stylesheet" href="vendor/framed/main.css">
 
     <noscript>Javascript is required to use this tool. Please enable it.</noscript>
 </head>
 
-<body id="app">
-    <button onclick="download('file text', 'myfilename.txt', 'text/plain')">Create file</button>
+<body>
+    <main id="app">
+        <!-- <div class="flex center" style="height: 100vh;">
+            <div class="container border">
+                <h1 class="txt-center">Welcome</h1>
+                <p>This is the launch page, if you've seen it before, you may be using a different browser or did cleared the cache.</p>
+                <p>Please, note that this app uses your navigator cache to store data as it couldn't be done by another way.</p>
+                <p>Avoid clearing the cache or you may loose what you've done.</p>
+                <p></p>
+                <fieldset>
+                    <legend>Debug mode</legend>
+                    <label for="no-debug">
+                        <input type="radio" name="debug" value="no-debug" checked="">
+                        <span>No debug</span>
+                    </label>
+
+                    <label for="debug">
+                        <input type="radio" name="debug" value="debug">
+                        <span>Debug</span>
+                    </label>
+
+                    <label for="verbose">
+                        <input type="radio" name="debug" value="verbose">
+                        <span>Verbose</span>
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>Mode</legend>
+                    <label for="light">
+                        <input type="radio" name="mode" value="light" checked="">
+                        <span>Light</span>
+                    </label>
+
+                    <label for="complete">
+                        <input type="radio" name="mode" value="complete">
+                        <span>Complete</span>
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>Editor</legend>
+                    <label for="basic">
+                        <input type="radio" name="editor" value="basic" checked="">
+                        <span>Basic</span>
+                    </label>
+
+                    <label for="advanced">
+                        <input type="radio" name="editor" value="advanced">
+                        <span>Advanced</span>
+                    </label>
+                </fieldset>
+                <button class="width-100 margin-auto">Let's get started</button>
+            </div>
+        </div> -->
+    </main>
+    <!-- <hr>
+    <button onclick="download('file text', 'myfilename.txt', 'text/plain')">Create file</button> -->
 </body>
 
 </html>
