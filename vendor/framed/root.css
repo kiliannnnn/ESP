@@ -8,9 +8,8 @@
     --color-light: #d7dfe2;
     --color-dark: #282b3a;
     --color-text: #361818;
-
     --responsive-padding: calc(8px + 1.5625vw);
-    --responsive-font-size: calc(15px + 0.390625vw);
+    /* --responsive-font-size: calc(15px + 0.390625vw); */
     /* calc(1rem + 0.3125vw) */
 }
 

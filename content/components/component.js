@@ -45,4 +45,19 @@ class Component {
             });
         });
     }
+
+    listen() {
+        var button = document.getElementById("FreshInstallBtn");
+        button.addEventListener('click', () => {
+            config.workspace.freshInstall = false;
+            localStorage.setItem('config', JSON.stringify(config));
+            removeComponent(componentActiveList[0], container);
+            componentActiveList.shift();
+            componentPriority = ["Header", "Content", "PagesManager", "Footer"];
+            componentPriority.forEach(component => {
+                componentActiveList.push(component);
+                renderComponent(component, container);
+            });
+        });
+    }
 }

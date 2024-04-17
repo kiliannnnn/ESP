@@ -16,6 +16,7 @@ class FreshInstall extends Component {
 
         var node_2 = document.createElement('DIV');
         node_2.setAttribute('class', 'container border');
+        node_2.setAttribute('style', 'margin: 10px;');
         node_1.appendChild(node_2);
 
         var node_3 = document.createElement('H1');
@@ -35,6 +36,7 @@ class FreshInstall extends Component {
 
         var node_7 = document.createElement('P');
         node_7.innerText = "Avoid clearing the cache or you may loose what you've done.";
+        node_7.setAttribute('style', 'color: var(--color-danger);');
         node_2.appendChild(node_7);
 
         var node_param = new ParamModes();
@@ -48,21 +50,23 @@ class FreshInstall extends Component {
         var node_46 = document.createTextNode((new String("Let\'s get started")));
         node_45.appendChild(node_46);
 
+        // ------------------------------------------------------------------------------
         this.element = document.createElement('section');
-        this.element.id = 'FreshInstall';
+        this.element.id = "FreshInstall";
         this.element.appendChild(node_1);
     }
 
-    render(targetElement) {
-        targetElement.appendChild(this.element);
+    render(container) {
+        this.element = super.render(container);
         this.watch();
+        this.listen();
     }
 }
 
 class PagesManager extends Component {
     constructor() {
         super();
-        
+
         this.element = document.createElement('section');
         this.element.innerHTML = '<h1>Pages manager</h1>';
 
@@ -110,8 +114,8 @@ class PagesManager extends Component {
         });
     }
 
-    render(targetElement) {
-        targetElement.appendChild(this.element);
+    render(container) {
+        super.render(container);
         this.createOptions();
     }
 }

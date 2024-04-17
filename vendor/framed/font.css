@@ -1,0 +1,32 @@
+* {
+    font-size: var(--responsive-font-size);
+    color: var(--color-dark);
+}
+
+h1 {
+    font-size: calc(24px + 0.78125vw);
+}
+
+h2 {
+    font-size: calc(20px + 0.625vw);
+}
+
+h3 {
+    font-size: calc(18px + 0.46875vw);
+}
+
+h4 {
+    font-size: calc(16px + 0.390625vw);
+}
+
+h5 {
+    font-size: calc(14px + 0.3125vw);
+}
+
+h6 {
+    font-size: calc(12px + 0.234375vw);
+}
+
+p {
+    font-size: calc(14px + 0.3125vw);
+}
