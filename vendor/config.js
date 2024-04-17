@@ -58,8 +58,11 @@ if (localStorage.getItem('config') == null) {
         },
         workspace: {
             freshInstall: true,
-            componentPriority: ["FreshInstall"],// default value ["FreshInstall"] | default workspace ["Header", "Content", "PagesManager", "Footer"]
-        }
+            componentPriority: ["Header", "Content", "Footer"],// default value ["FreshInstall"] | default workspace ["Header", "Content", "PagesManager", "Footer"]
+        },
+        content: {
+            pages: [],
+        },
     }
 }
 else {

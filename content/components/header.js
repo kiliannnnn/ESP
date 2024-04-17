@@ -7,6 +7,10 @@ class Header extends Component{
         this.element.style.backgroundColor = 'var(--color-light)';
         this.element.style.justifyContent = 'space-between';
 
+        var div = document.createElement('div');
+        div.classList.add('flex');
+
+        // button home
         var btnHome = document.createElement('button');
         btnHome.addEventListener('click', () => {
             console.log("change the component priority to go to home page");
@@ -16,7 +20,9 @@ class Header extends Component{
         logoHome.classList.add('icon');
         logoHome.src = "content/assets/icons/home-50.png";
         btnHome.appendChild(logoHome);
+        div.appendChild(btnHome);
 
+        // button settings
         var btnSettings = document.createElement('button');
         btnSettings.addEventListener('click', () => {
             console.log("change the component priority to go to settings page");
@@ -26,15 +32,51 @@ class Header extends Component{
         logoSettings.classList.add('icon');
         logoSettings.src = "content/assets/icons/settings-50.png";
         btnSettings.appendChild(logoSettings);
-
-        var div = document.createElement('div');
-        div.classList.add('flex');
         div.appendChild(btnSettings);
-        div.appendChild(btnHome);
+
+        // button pages
+        var btnPages = document.createElement('button');
+        btnPages.addEventListener('click', () => {
+            componentPriority = ["Header", "Editor", "Footer"];
+            console.log("change the component priority to go to the editable page");
+        });
+        btnPages.style.margin = '0';
+        var logoPages = document.createElement('img');
+        logoPages.classList.add('icon');
+        logoPages.src = "content/assets/icons/page-50.png";
+        btnPages.appendChild(logoPages);
+        div.appendChild(btnPages);
+
         this.element.appendChild(div);
     }
 
     render() {
         document.body.insertBefore(this.element, document.body.firstChild);
     }
+}
+
+class PagesManager extends Component {
+    constructor() {
+        super();
+
+        this.element = document.createElement('section');
+        this.element.innerHTML = '<h1>Pages manager</h1>';
+
+        var node_1 = document.createElement('DIV');
+        this.element.appendChild(node_1);
+
+        var node_2 = document.createElement('LABEL');
+        node_2.setAttribute('for', 'page');
+        node_1.appendChild(node_2);
+
+        var node_3 = document.createElement('select');
+        node_3.setAttribute('name', 'page');
+        node_3.setAttribute('id', 'page');
+        node_1.appendChild(node_3);
+    }
+
+    // render(container) {
+    //     super.render(container);
+    //     this.createOptions();
+    // }
 }

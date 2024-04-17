@@ -40,3 +40,7 @@ function HTMLToDOM(html) {
     var output = converter.convert(data);
     return output;
 }
+
+function clearCache() {
+    localStorage.clear('config');
+}

@@ -1,35 +1,34 @@
-var componentPriority = ["FreshInstall"]; //config.workspace.componentPriority;
+var componentPriority = config.workspace.componentPriority;
 var componentActiveList = [];
 
 
 window.onload = () => {
     const container = document.getElementById('app');
 
-    console.log(config);
-
-    // if (config.options.freshInstall === true) {
-    //     componentPriority = ["FreshInstall"];
-    // }
+    if (config.workspace.freshInstall === true) {
+        componentPriority = ["FreshInstall"];
+    }
 
     componentPriority.forEach(component => {
         componentActiveList.push(component);
         renderComponent(component, container);
     });
 
-    if (componentActiveList.includes("FreshInstall")) {
-        var button = document.getElementById("FreshInstallBtn");
-        button.addEventListener('click', () => {
-            config.workspace.freshInstall = false;
-            localStorage.setItem('config', JSON.stringify(config));
-            removeComponent(componentActiveList[0], container);
-            componentActiveList.shift();
-            componentPriority = ["Header", "Content", "PagesManager", "Footer"];
-            componentPriority.forEach(component => {
-                componentActiveList.push(component);
-                renderComponent(component, container);
-            });
-        });
-    }
+    // Moved to component.js into listen() method
+    // if (componentActiveList.includes("FreshInstall")) {
+    //     var button = document.getElementById("FreshInstallBtn");
+    //     button.addEventListener('click', () => {
+    //         config.workspace.freshInstall = false;
+    //         localStorage.setItem('config', JSON.stringify(config));
+    //         removeComponent(componentActiveList[0], container);
+    //         componentActiveList.shift();
+    //         componentPriority = ["Header", "Content", "PagesManager", "Footer"];
+    //         componentPriority.forEach(component => {
+    //             componentActiveList.push(component);
+    //             renderComponent(component, container);
+    //         });
+    //     });
+    // }
 };
 
 function renderComponent(component, container) {

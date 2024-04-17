@@ -19,7 +19,7 @@ class Component {
             element.addEventListener('change', () => {
                 config.options.debug = element.value;
                 localStorage.setItem('config', JSON.stringify(config));
-                console.log(JSON.parse(localStorage.getItem('config')));
+                // console.log(JSON.parse(localStorage.getItem('config')));
             });
         });
 
@@ -30,7 +30,7 @@ class Component {
             element.addEventListener('change', () => {
                 config.options.mode = element.value;
                 localStorage.setItem('config', JSON.stringify(config));
-                console.log(JSON.parse(localStorage.getItem('config')));
+                // console.log(JSON.parse(localStorage.getItem('config')));
             });
         });
 
@@ -41,7 +41,7 @@ class Component {
             element.addEventListener('change', () => {
                 config.options.editor = element.value;
                 localStorage.setItem('config', JSON.stringify(config));
-                console.log(JSON.parse(localStorage.getItem('config')));
+                // console.log(JSON.parse(localStorage.getItem('config')));
             });
         });
     }
@@ -51,13 +51,45 @@ class Component {
         button.addEventListener('click', () => {
             config.workspace.freshInstall = false;
             localStorage.setItem('config', JSON.stringify(config));
+            const container = document.getElementById('app');
             removeComponent(componentActiveList[0], container);
             componentActiveList.shift();
-            componentPriority = ["Header", "Content", "PagesManager", "Footer"];
+            componentPriority = ["Header", "Content", "Footer"];
             componentPriority.forEach(component => {
                 componentActiveList.push(component);
                 renderComponent(component, container);
             });
+        });
+    }
+
+    createOptions() {
+        const pages = ["Page 1", "Page 2", "Page 3", "Page 4", "Page 5", "Page 6"];
+
+        // pages.forEach(page => {
+        //     var node_x = document.createElement('OPTION');
+        //     node_x.setAttribute('value', page.toLowerCase().replace(/\s+/g, ""));
+
+        //     var node_y = document.createTextNode((new String(page)));
+        //     node_x.appendChild(node_y);
+        // });
+
+        // var pages = config.pages;
+        // var select = document.getElementById('page');
+
+        // pages.forEach(page => {
+        //     var option = document.createElement('OPTION');
+        //     option.setAttribute('value', page);
+        //     option.innerHTML = page;
+        //     select.appendChild(option);
+        // });
+
+        const select = this.element.querySelector('#page');
+
+        pages.forEach(page => {
+            const option = document.createElement('option');
+            option.value = page.toLowerCase().replace(/\s+/g, "");
+            option.textContent = page;
+            select.appendChild(option);
         });
     }
 }

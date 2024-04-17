@@ -63,60 +63,66 @@ class FreshInstall extends Component {
     }
 }
 
-class PagesManager extends Component {
+class Editor extends Component {
     constructor() {
         super();
 
         this.element = document.createElement('section');
-        this.element.innerHTML = '<h1>Pages manager</h1>';
+        this.element.innerHTML = '<h1>Editor</h1>';
 
         var node_1 = document.createElement('DIV');
         this.element.appendChild(node_1);
 
-        var node_2 = document.createElement('LABEL');
-        node_2.setAttribute('for', 'page');
+        var node_2 = document.createElement('TEXTAREA');
+        node_2.setAttribute('id', 'editor');
+        node_2.setAttribute('class', 'width-100');
+        node_2.setAttribute('rows', '10');
+        node_2.setAttribute('style', 'margin: 10px;');
         node_1.appendChild(node_2);
 
-        var node_3 = document.createElement('select');
-        node_3.setAttribute('name', 'page');
-        node_3.setAttribute('id', 'page');
+        var node_3 = document.createElement('BUTTON');
+        node_3.setAttribute('class', 'width-100 margin-auto');
+        node_3.setAttribute('style', 'margin: 10px;');
         node_1.appendChild(node_3);
-    }
 
-    createOptions() {
-        const pages = ["Page 1", "Page 2", "Page 3", "Page 4", "Page 5", "Page 6"];
+        var node_4 = document.createTextNode((new String("Save")));
+        node_3.appendChild(node_4);
 
-        // pages.forEach(page => {
-        //     var node_x = document.createElement('OPTION');
-        //     node_x.setAttribute('value', page.toLowerCase().replace(/\s+/g, ""));
+        var node_5 = document.createElement('DIV');
+        node_5.setAttribute('class', 'flex center');
+        node_5.setAttribute('style', 'height: 100vh;');
+        node_1.appendChild(node_5);
 
-        //     var node_y = document.createTextNode((new String(page)));
-        //     node_x.appendChild(node_y);
-        // });
+        var node_6 = document.createElement('DIV');
+        node_6.setAttribute('class', 'container border');
+        node_6.setAttribute('style', 'margin: 10px;');
+        node_5.appendChild(node_6);
 
-        // var pages = config.pages;
-        // var select = document.getElementById('page');
+        var node_7 = document.createElement('H1');
+        node_7.setAttribute('class', 'txt-center');
+        node_7.innerHTML = 'Editor';
+        node_6.appendChild(node_7);
 
-        // pages.forEach(page => {
-        //     var option = document.createElement('OPTION');
-        //     option.setAttribute('value', page);
-        //     option.innerHTML = page;
-        //     select.appendChild(option);
-        // });
+        var node_8 = document.createElement('P');
+        node_8.innerText = "This is the editor page, you can write anything here.";
+        node_6.appendChild(node_8);
 
-        const select = this.element.querySelector('#page');
+        var node_9 = document.createElement('P');
+        node_9.innerText = "It is saved in your browser cache and will be there when you come back.";
+        node_6.appendChild(node_9);
 
-        pages.forEach(page => {
-            const option = document.createElement('option');
-            option.value = page.toLowerCase().replace(/\s+/g, "");
-            option.textContent = page;
-            select.appendChild(option);
-        });
+        var node_10 = document.createElement('P');
+        node_10.innerText = "You can switch to the pages manager to see the saved pages.";
+        node_6.appendChild(node_10);
+
+        var node_param = new ParamModes();
+        node_6.appendChild(node_param);
     }
 
     render(container) {
-        super.render(container);
-        this.createOptions();
+        this.element = super.render(container);
+        this.watch();
+        this.listen();
     }
 }
 
