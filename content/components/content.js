@@ -1,3 +1,15 @@
+class Dashboard extends Component {
+    constructor() {
+        super();
+        this.element = document.createElement('section');
+        this.element.id = "Dashboard";
+
+        var title = document.createElement('H1');
+        title.textContent = "Dashboard";
+        this.element.appendChild(title);
+    }
+}
+
 class Content extends Component {
     constructor() {
         super();
@@ -68,61 +80,273 @@ class Editor extends Component {
         super();
 
         this.element = document.createElement('section');
-        this.element.innerHTML = '<h1>Editor</h1>';
+        this.element.id = "Editor";
 
-        var node_1 = document.createElement('DIV');
-        this.element.appendChild(node_1);
+        var container = document.createElement('div');
+        container.style.display = 'grid';
+        container.style.gridTemplateColumns = '1fr 3fr 1fr';
+        container.style.gap = '0px 1NaNem';
+        container.style.gridTemplateAreas = '"left-aside page right-aside"';
 
-        var node_2 = document.createElement('TEXTAREA');
-        node_2.setAttribute('id', 'editor');
-        node_2.setAttribute('class', 'width-100');
-        node_2.setAttribute('rows', '10');
-        node_2.setAttribute('style', 'margin: 10px;');
-        node_1.appendChild(node_2);
+        var leftAside = document.createElement('aside');
+        leftAside.style.alignSelf = 'start';
+        leftAside.style.gridArea = 'left-aside';
+        leftAside.appendChild(new TextFormatter());
+        container.appendChild(leftAside);
 
-        var node_3 = document.createElement('BUTTON');
-        node_3.setAttribute('class', 'width-100 margin-auto');
-        node_3.setAttribute('style', 'margin: 10px;');
-        node_1.appendChild(node_3);
+        var rightAside = document.createElement('aside');
+        rightAside.style.alignSelf = 'start';
+        rightAside.style.gridArea = 'right-aside';
+        container.appendChild(rightAside);
 
-        var node_4 = document.createTextNode((new String("Save")));
-        node_3.appendChild(node_4);
+        var page = document.createElement('div');
+        page.style.justifySelf = 'center';
+        page.style.alignSelf = 'stretch';
+        page.style.gridArea = 'page';
+        page.style.minHeight = '100vh';
+        page.style.width = '100%';
+        page.style.backgroundColor = 'var(--color-light)';
+        page.style.border = '1px solid var(--color-dark)';
+        container.appendChild(page);
 
-        var node_5 = document.createElement('DIV');
-        node_5.setAttribute('class', 'flex center');
-        node_5.setAttribute('style', 'height: 100vh;');
-        node_1.appendChild(node_5);
+        this.element.appendChild(container);
 
-        var node_6 = document.createElement('DIV');
-        node_6.setAttribute('class', 'container border');
-        node_6.setAttribute('style', 'margin: 10px;');
-        node_5.appendChild(node_6);
 
-        var node_7 = document.createElement('H1');
-        node_7.setAttribute('class', 'txt-center');
-        node_7.innerHTML = 'Editor';
-        node_6.appendChild(node_7);
+        // this.element = document.createElement('section');
+        // this.element.innerHTML = '<h1>Editor</h1>';
 
-        var node_8 = document.createElement('P');
-        node_8.innerText = "This is the editor page, you can write anything here.";
-        node_6.appendChild(node_8);
+        // var node_1 = document.createElement('DIV');
+        // this.element.appendChild(node_1);
 
-        var node_9 = document.createElement('P');
-        node_9.innerText = "It is saved in your browser cache and will be there when you come back.";
-        node_6.appendChild(node_9);
+        // var node_2 = document.createElement('TEXTAREA');
+        // node_2.setAttribute('id', 'editor');
+        // node_2.setAttribute('class', 'width-100');
+        // node_2.setAttribute('rows', '10');
+        // node_2.setAttribute('style', 'margin: 10px;');
+        // node_1.appendChild(node_2);
 
-        var node_10 = document.createElement('P');
-        node_10.innerText = "You can switch to the pages manager to see the saved pages.";
-        node_6.appendChild(node_10);
+        // var node_3 = document.createElement('BUTTON');
+        // node_3.setAttribute('class', 'width-100 margin-auto');
+        // node_3.setAttribute('style', 'margin: 10px;');
+        // node_1.appendChild(node_3);
 
-        var node_param = new ParamModes();
-        node_6.appendChild(node_param);
+        // var node_4 = document.createTextNode((new String("Save")));
+        // node_3.appendChild(node_4);
+
+        // var node_5 = document.createElement('DIV');
+        // node_5.setAttribute('class', 'flex center');
+        // node_5.setAttribute('style', 'height: 100vh;');
+        // node_1.appendChild(node_5);
+
+        // var node_6 = document.createElement('DIV');
+        // node_6.setAttribute('class', 'container border');
+        // node_6.setAttribute('style', 'margin: 10px;');
+        // node_5.appendChild(node_6);
+
+        // var node_7 = document.createElement('H1');
+        // node_7.setAttribute('class', 'txt-center');
+        // node_7.innerHTML = 'Editor';
+        // node_6.appendChild(node_7);
+
+        // var node_8 = document.createElement('P');
+        // node_8.innerText = "This is the editor page, you can write anything here.";
+        // node_6.appendChild(node_8);
+
+        // var node_9 = document.createElement('P');
+        // node_9.innerText = "It is saved in your browser cache and will be there when you come back.";
+        // node_6.appendChild(node_9);
+
+        // var node_10 = document.createElement('P');
+        // node_10.innerText = "You can switch to the pages manager to see the saved pages.";
+        // node_6.appendChild(node_10);
+
+        // var node_param = new ParamModes();
+        // node_6.appendChild(node_param);
     }
 
     render(container) {
         this.element = super.render(container);
-        this.watch();
-        this.listen();
+    }
+}
+
+class TextFormatter extends Component {
+    constructor() {
+        super();
+
+        var node_1 = document.createElement('DIV');
+        node_1.setAttribute('class', 'textFormatting');
+
+        var node_2 = document.createElement('BUTTON');
+        node_2.setAttribute('type', 'button');
+        node_2.setAttribute('onclick', 'applyFormat(\'justifyLeft\')');
+        node_1.appendChild(node_2);
+
+        var node_3 = document.createTextNode((new String("Left")));
+        node_2.appendChild(node_3);
+
+        var node_4 = document.createElement('BUTTON');
+        node_4.setAttribute('type', 'button');
+        node_4.setAttribute('onclick', 'applyFormat(\'justifyCenter\')');
+        node_1.appendChild(node_4);
+
+        var node_5 = document.createTextNode((new String("Center")));
+        node_4.appendChild(node_5);
+
+        var node_6 = document.createElement('BUTTON');
+        node_6.setAttribute('type', 'button');
+        node_6.setAttribute('onclick', 'applyFormat(\'justifyRight\')');
+        node_1.appendChild(node_6);
+
+        var node_7 = document.createTextNode((new String("Right")));
+        node_6.appendChild(node_7);
+
+        var node_8 = document.createElement('BUTTON');
+        node_8.setAttribute('type', 'button');
+        node_8.setAttribute('onclick', 'applyFormat(\'justifyFull\')');
+        node_1.appendChild(node_8);
+
+        var node_9 = document.createTextNode((new String("Justify")));
+        node_8.appendChild(node_9);
+
+        var node_10 = document.createElement('BUTTON');
+        node_10.setAttribute('type', 'button');
+        node_10.setAttribute('onclick', 'applyFormat(\'insertOrderedList\')');
+        node_1.appendChild(node_10);
+
+        var node_11 = document.createTextNode((new String("Ordered List")));
+        node_10.appendChild(node_11);
+
+        var node_12 = document.createElement('BUTTON');
+        node_12.setAttribute('type', 'button');
+        node_12.setAttribute('onclick', 'applyFormat(\'insertUnorderedList\')');
+        node_1.appendChild(node_12);
+
+        var node_13 = document.createTextNode((new String("Unordered List")));
+        node_12.appendChild(node_13);
+
+        var node_14 = document.createElement('BUTTON');
+        node_14.setAttribute('type', 'button');
+        node_14.setAttribute('onclick', 'applyFormat(\'indent\')');
+        node_1.appendChild(node_14);
+
+        var node_15 = document.createTextNode((new String("Indent")));
+        node_14.appendChild(node_15);
+
+        var node_16 = document.createElement('BUTTON');
+        node_16.setAttribute('type', 'button');
+        node_16.setAttribute('onclick', 'applyFormat(\'outdent\')');
+        node_1.appendChild(node_16);
+
+        var node_17 = document.createTextNode((new String("Outdent")));
+        node_16.appendChild(node_17);
+
+        var node_18 = document.createElement('BUTTON');
+        node_18.setAttribute('type', 'button');
+        node_18.setAttribute('onclick', 'applyFormat(\'insertParagraph\')');
+        node_1.appendChild(node_18);
+
+        var node_19 = document.createTextNode((new String("New Line")));
+        node_18.appendChild(node_19);
+
+        var node_20 = document.createElement('BUTTON');
+        node_20.setAttribute('type', 'button');
+        node_20.setAttribute('onclick', 'applyFormat(\'insertHorizontalRule\')');
+        node_1.appendChild(node_20);
+
+        var node_21 = document.createTextNode((new String("Horizontal Line")));
+        node_20.appendChild(node_21);
+
+        var node_22 = document.createElement('BUTTON');
+        node_22.setAttribute('type', 'button');
+        node_22.setAttribute('onclick', 'applyFormat(\'removeFormat\')');
+        node_1.appendChild(node_22);
+
+        var node_23 = document.createTextNode((new String("Remove Format")));
+        node_22.appendChild(node_23);
+
+        var node_24 = document.createElement('BUTTON');
+        node_24.setAttribute('type', 'button');
+        node_24.setAttribute('onclick', 'applyFormat(\'bold\')');
+        node_1.appendChild(node_24);
+
+        var node_25 = document.createTextNode((new String("Bold")));
+        node_24.appendChild(node_25);
+
+        var node_26 = document.createElement('BUTTON');
+        node_26.setAttribute('type', 'button');
+        node_26.setAttribute('onclick', 'applyFormat(\'italic\')');
+        node_1.appendChild(node_26);
+
+        var node_27 = document.createTextNode((new String("Italic")));
+        node_26.appendChild(node_27);
+
+        var node_28 = document.createElement('BUTTON');
+        node_28.setAttribute('type', 'button');
+        node_28.setAttribute('onclick', 'applyFormat(\'underline\')');
+        node_1.appendChild(node_28);
+
+        var node_29 = document.createTextNode((new String("Underline")));
+        node_28.appendChild(node_29);
+
+        var node_30 = document.createElement('LABEL');
+        node_30.setAttribute('for', 'fontSize');
+        node_1.appendChild(node_30);
+
+        var node_31 = document.createElement('SELECT');
+        node_31.setAttribute('id', 'fontSize');
+        node_31.setAttribute('onchange', 'applyFormat(\'fontSize\', this.value)');
+        node_1.appendChild(node_31);
+
+        var node_32 = document.createElement('OPTION');
+        node_32.setAttribute('value', '1');
+        node_31.appendChild(node_32);
+
+        var node_33 = document.createTextNode((new String("1")));
+        node_32.appendChild(node_33);
+
+        var node_34 = document.createElement('OPTION');
+        node_34.setAttribute('value', '2');
+        node_31.appendChild(node_34);
+
+        var node_35 = document.createTextNode((new String("2")));
+        node_34.appendChild(node_35);
+
+        var node_36 = document.createElement('OPTION');
+        node_36.setAttribute('value', '3');
+        node_31.appendChild(node_36);
+
+        var node_37 = document.createTextNode((new String("3")));
+        node_36.appendChild(node_37);
+
+        var node_38 = document.createElement('OPTION');
+        node_38.setAttribute('value', '4');
+        node_31.appendChild(node_38);
+
+        var node_39 = document.createTextNode((new String("4")));
+        node_38.appendChild(node_39);
+
+        var node_40 = document.createElement('OPTION');
+        node_40.setAttribute('value', '5');
+        node_31.appendChild(node_40);
+
+        var node_41 = document.createTextNode((new String("5")));
+        node_40.appendChild(node_41);
+
+        var node_42 = document.createElement('OPTION');
+        node_42.setAttribute('value', '6');
+        node_31.appendChild(node_42);
+
+        var node_43 = document.createTextNode((new String("6")));
+        node_42.appendChild(node_43);
+
+        var node_44 = document.createElement('OPTION');
+        node_44.setAttribute('value', '7');
+        node_31.appendChild(node_44);
+
+        var node_45 = document.createTextNode((new String("7")));
+        node_44.appendChild(node_45);
+
+        return node_1;
     }
 }
 

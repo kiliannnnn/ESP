@@ -3,16 +3,11 @@ var componentActiveList = [];
 
 
 window.onload = () => {
-    const container = document.getElementById('app');
-
     if (config.workspace.freshInstall === true) {
         componentPriority = ["FreshInstall"];
     }
 
-    componentPriority.forEach(component => {
-        componentActiveList.push(component);
-        renderComponent(component, container);
-    });
+    refreshDisplay();
 
     // Moved to component.js into listen() method
     // if (componentActiveList.includes("FreshInstall")) {
@@ -70,13 +65,34 @@ function renderComponent(component, container) {
 function removeComponent(component) {
     try {
         if (component) {
+            if (component === "Header") {
+                document.body.removeChild(document.body.firstChild)
+            }
+            if (component === "Footer") {
+                document.body.removeChild(document.body.lastChild)
+            }
+            else {
+                var element = document.getElementById(component);
+                element.parentNode.removeChild(element);
+            }
             // eval("new " + component + "()").remove(targetElement);
-            var element = document.getElementById(component);
-            element.parentNode.removeChild(element);
+            
             return true;
         }
     } catch (error) {
         console.log(error);
         return false;
     }
+}
+
+function refreshDisplay() {
+    const container = document.getElementById('app');
+    componentActiveList.forEach(component => {
+        removeComponent(component);
+    });
+    componentActiveList = [];
+    componentPriority.forEach(component => {
+        componentActiveList.push(component);
+        renderComponent(component, container);
+    });
 }

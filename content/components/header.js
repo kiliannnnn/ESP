@@ -13,7 +13,10 @@ class Header extends Component{
         // button home
         var btnHome = document.createElement('button');
         btnHome.addEventListener('click', () => {
-            console.log("change the component priority to go to home page");
+            componentPriority = ["Header", "Dashboard", "Footer"];
+            config.workspace.componentPriority = componentPriority;
+            localStorage.setItem('config', JSON.stringify(config));
+            refreshDisplay();
         });
         btnHome.style.margin = '0';
         var logoHome = document.createElement('img');
@@ -25,7 +28,10 @@ class Header extends Component{
         // button settings
         var btnSettings = document.createElement('button');
         btnSettings.addEventListener('click', () => {
-            console.log("change the component priority to go to settings page");
+            componentPriority = ["Header", "Settings", "Footer"];
+            config.workspace.componentPriority = componentPriority;
+            localStorage.setItem('config', JSON.stringify(config));
+            refreshDisplay();
         });
         btnSettings.style.margin = '0';
         var logoSettings = document.createElement('img');
@@ -38,7 +44,9 @@ class Header extends Component{
         var btnPages = document.createElement('button');
         btnPages.addEventListener('click', () => {
             componentPriority = ["Header", "Editor", "Footer"];
-            console.log("change the component priority to go to the editable page");
+            config.workspace.componentPriority = componentPriority;
+            localStorage.setItem('config', JSON.stringify(config));
+            refreshDisplay();
         });
         btnPages.style.margin = '0';
         var logoPages = document.createElement('img');

@@ -54,7 +54,7 @@ class Component {
             const container = document.getElementById('app');
             removeComponent(componentActiveList[0], container);
             componentActiveList.shift();
-            componentPriority = ["Header", "Content", "Footer"];
+            componentPriority = ["Header", "Dashboard", "Footer"];
             componentPriority.forEach(component => {
                 componentActiveList.push(component);
                 renderComponent(component, container);
