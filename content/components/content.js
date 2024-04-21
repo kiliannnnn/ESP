@@ -79,6 +79,8 @@ class Editor extends Component {
     constructor() {
         super();
 
+        document.title = "Framed - Editor";
+
         this.element = document.createElement('section');
         this.element.id = "Editor";
 
@@ -163,9 +165,27 @@ class Editor extends Component {
         // var node_param = new ParamModes();
         // node_6.appendChild(node_param);
     }
+}
+
+class Settings extends Component {
+    constructor() {
+        super();
+
+        document.title = "Framed - Settings";
+        
+        this.element = document.createElement('section');
+        this.element.id = "Settings";
+
+        var title = document.createElement('H1');
+        title.textContent = "Settings";
+        this.element.appendChild(title);
+
+        this.element.appendChild(new ParamModes());
+    }
 
     render(container) {
         this.element = super.render(container);
+        this.watch();
     }
 }
 
@@ -287,64 +307,6 @@ class TextFormatter extends Component {
 
         var node_29 = document.createTextNode((new String("Underline")));
         node_28.appendChild(node_29);
-
-        var node_30 = document.createElement('LABEL');
-        node_30.setAttribute('for', 'fontSize');
-        node_1.appendChild(node_30);
-
-        var node_31 = document.createElement('SELECT');
-        node_31.setAttribute('id', 'fontSize');
-        node_31.setAttribute('onchange', 'applyFormat(\'fontSize\', this.value)');
-        node_1.appendChild(node_31);
-
-        var node_32 = document.createElement('OPTION');
-        node_32.setAttribute('value', '1');
-        node_31.appendChild(node_32);
-
-        var node_33 = document.createTextNode((new String("1")));
-        node_32.appendChild(node_33);
-
-        var node_34 = document.createElement('OPTION');
-        node_34.setAttribute('value', '2');
-        node_31.appendChild(node_34);
-
-        var node_35 = document.createTextNode((new String("2")));
-        node_34.appendChild(node_35);
-
-        var node_36 = document.createElement('OPTION');
-        node_36.setAttribute('value', '3');
-        node_31.appendChild(node_36);
-
-        var node_37 = document.createTextNode((new String("3")));
-        node_36.appendChild(node_37);
-
-        var node_38 = document.createElement('OPTION');
-        node_38.setAttribute('value', '4');
-        node_31.appendChild(node_38);
-
-        var node_39 = document.createTextNode((new String("4")));
-        node_38.appendChild(node_39);
-
-        var node_40 = document.createElement('OPTION');
-        node_40.setAttribute('value', '5');
-        node_31.appendChild(node_40);
-
-        var node_41 = document.createTextNode((new String("5")));
-        node_40.appendChild(node_41);
-
-        var node_42 = document.createElement('OPTION');
-        node_42.setAttribute('value', '6');
-        node_31.appendChild(node_42);
-
-        var node_43 = document.createTextNode((new String("6")));
-        node_42.appendChild(node_43);
-
-        var node_44 = document.createElement('OPTION');
-        node_44.setAttribute('value', '7');
-        node_31.appendChild(node_44);
-
-        var node_45 = document.createTextNode((new String("7")));
-        node_44.appendChild(node_45);
 
         return node_1;
     }
