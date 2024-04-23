@@ -10,6 +10,18 @@ class Header extends Component{
         var div = document.createElement('div');
         div.classList.add('flex');
 
+        // button clear cache
+        var btnClearCache = document.createElement('button');
+        btnClearCache.addEventListener('click', () => {
+            localStorage.clear('config');
+        });
+        btnClearCache.style.margin = '0';
+        var logoPoubelle = document.createElement('img');
+        logoPoubelle.classList.add('icon');
+        logoPoubelle.src = "content/assets/icons/bin-50.png";
+        btnClearCache.appendChild(logoPoubelle);
+        div.appendChild(btnClearCache);
+
         // button home
         var btnHome = document.createElement('button');
         btnHome.addEventListener('click', () => {

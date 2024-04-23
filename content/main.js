@@ -41,10 +41,6 @@ function HTMLToDOM(html) {
     return output;
 }
 
-function clearCache() {
-    localStorage.clear('config');
-}
-
 function execCommandWithHTML(command, value) {
     document.execCommand('formatBlock', true, 'div');
     document.execCommand(command, true, value);
