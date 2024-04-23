@@ -14,6 +14,7 @@ class Header extends Component{
         var btnClearCache = document.createElement('button');
         btnClearCache.addEventListener('click', () => {
             localStorage.clear('config');
+            window.location.reload();
         });
         btnClearCache.style.margin = '0';
         var logoPoubelle = document.createElement('img');

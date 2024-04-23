@@ -4,6 +4,8 @@ class Dashboard extends Component {
         this.element = document.createElement('section');
         this.element.id = "Dashboard";
 
+        document.title = "Framed - Dashboard";
+
         var title = document.createElement('H1');
         title.textContent = "Dashboard";
         this.element.appendChild(title);
@@ -110,6 +112,18 @@ class Editor extends Component {
         page.style.backgroundColor = 'var(--color-light)';
         page.style.border = '1px solid var(--color-dark)';
         container.appendChild(page);
+
+        var editorContainer = document.createElement('div');
+        editorContainer.classList = 'editor-container';
+        editorContainer.style.height = '100%';
+
+        var editor = document.createElement('div');
+        editor.id = 'editor';
+        editor.contentEditable = 'true';
+        editor.style.height = '100%';
+
+        editorContainer.appendChild(editor);
+        page.appendChild(editorContainer);
 
         this.element.appendChild(container);
 
