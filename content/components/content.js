@@ -101,6 +101,7 @@ class Editor extends Component {
         var rightAside = document.createElement('aside');
         rightAside.style.alignSelf = 'start';
         rightAside.style.gridArea = 'right-aside';
+        //rightAside.appendChild(new Tags());
         container.appendChild(rightAside);
 
         var page = document.createElement('div');
@@ -121,7 +122,7 @@ class Editor extends Component {
         editor.id = 'editor';
         editor.contentEditable = 'true';
         editor.style.height = '100%';
-
+        
         editorContainer.appendChild(editor);
         page.appendChild(editorContainer);
 
@@ -321,6 +322,16 @@ class TextFormatter extends Component {
 
         var node_29 = document.createTextNode((new String("Underline")));
         node_28.appendChild(node_29);
+
+        return node_1;
+    }
+}
+
+class Tags extends Component {
+    constructor() {
+        super();
+
+        
 
         return node_1;
     }

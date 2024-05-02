@@ -9,6 +9,8 @@
     text-align: left;
     white-space: nowrap;
     vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
     user-select: none;
     border-radius: 0;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;

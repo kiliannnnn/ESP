@@ -70,3 +70,19 @@ function addTag(tag) {
     selection.removeAllRanges();
     selection.addRange(range);
 }
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const draggables = document.querySelectorAll('.draggable');
+    draggables.forEach(draggable => {
+        draggable.addEventListener('dragstart', handleDragStart(event));
+        draggable.addEventListener('dragend', handleDragEnd(event));
+    });
+});
+
+function handleDragStart(event) {
+    console.log(event);
+}
+
+function handleDragEnd(event) {
+    console.log(`The element with ID ${event.target.id} has stopped being dragged`);
+}

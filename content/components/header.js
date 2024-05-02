@@ -68,6 +68,27 @@ class Header extends Component{
         btnPages.appendChild(logoPages);
         div.appendChild(btnPages);
 
+        // button export
+        var btnExport = document.createElement('button');
+        btnExport.addEventListener('click', () => {
+            var text = editor.innerHTML;
+            var blob = new Blob([text], {type: 'text/plain'});
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'index.html';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+        btnExport.style.margin = '0';
+        var logoExport = document.createElement('img');
+        logoExport.classList.add('icon');
+        logoExport.src = "content/assets/icons/export-50.png";
+        btnExport.appendChild(logoExport);
+        if (componentPriority.includes("Editor")) {
+            div.appendChild(btnExport);
+        }
+
         this.element.appendChild(div);
     }
 

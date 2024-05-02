@@ -1,11 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editor</title>
+    <style>
+        /* Style for draggable element */
+        .draggable {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+            cursor: grab;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div id="tags-container">
+        <div class="tag draggable">
+            <h1>H1</h1>
+        </div>
+        <div class="tag draggable">
+            <h2>H2</h2>
+        </div>
+        <div class="tag draggable">
+            <h3>H3</h3>
+        </div>
+    </div>
+    <script>
+        var draggableElements = document.querySelectorAll('.draggable');
+
+        draggableElements.forEach(draggableElement => {
+            draggableElement.addEventListener('mousedown', handleMouseDown);
+            var offsetX, offsetY;
+
+            function handleMouseDown(event) {
+                offsetX = event.clientX - draggableElement.offsetLeft;
+                offsetY = event.clientY - draggableElement.offsetTop;
+
+                document.addEventListener('mousemove', handleMouseMove);
+                document.addEventListener('mouseup', handleMouseUp);
+            }
+
+            function handleMouseMove(event) {
+                event.target.style.position = 'absolute';
+                var newX = event.clientX - offsetX;
+                var newY = event.clientY - offsetY;
+
+                draggableElement.style.left = newX + 'px';
+                draggableElement.style.top = newY + 'px';
+            }
+
+            function handleMouseUp() {
+                document.removeEventListener('mousemove', handleMouseMove);
+                document.removeEventListener('mouseup', handleMouseUp);
+            }
+        });
+    </script>
 </body>
+
 </html>
