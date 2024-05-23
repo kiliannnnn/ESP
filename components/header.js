@@ -2,15 +2,19 @@ class Header extends Component {
     constructor() {
         super();
         this.element = document.createElement('header');
-        this.element.classList.add('w-full', 'md:w-1/12', 'p-4', 'float-left', 'bg-zinc-100', 'dark:bg-zinc-900');
+        this.element.classList.add('h-screen', 'w-full', 'md:w-1/12', 'p-4', 'float-left', 'bg-zinc-300', 'dark:bg-zinc-900', 'fixed', 'flex', 'flex-col', 'pb-16');
+        this.element.style.justifyContent = 'space-between';
+
+        var node_4 = document.createElement('div');
+        this.element.appendChild(node_4);
 
         var node_title = document.createElement('h1');
         node_title.textContent = 'Framed';
         node_title.classList.add('text-2xl', 'mb-4');
-        this.element.appendChild(node_title);
+        node_4.appendChild(node_title);
 
         var node_nav = new Nav();
-        this.element.appendChild(node_nav);
+        node_4.appendChild(node_nav);
 
 
         var node_1 = document.createElement('LABEL');
@@ -39,7 +43,6 @@ class Nav extends Component {
     constructor() {
         super();
         var node_main = document.createElement('nav');
-        node_main.classList.add('bg-zinc-100', 'dark:bg-zinc-900');
 
         // button clear cache
         var btnClearCache = document.createElement('button');
