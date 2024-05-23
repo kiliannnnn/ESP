@@ -25,10 +25,10 @@ class FreshInstall extends Component {
         super();
 
         var node_1 = document.createElement('DIV');
-        node_1.setAttribute('class', 'container mx-auto p-8');
+        node_1.setAttribute('class', 'container mx-auto p-8 h-svh flex flex-col justify-center items-center');
 
         var node_2 = document.createElement('H1');
-        node_2.setAttribute('class', 'text-4xl font-bold leading-tight text-center text-zinc-800 dark:text-white');
+        node_2.setAttribute('class', 'text-4xl font-bold leading-tight text-center text-zinc-800 dark:text-white mb-4');
         node_1.appendChild(node_2);
 
         var node_3 = document.createTextNode((new String("Framed site builder")));
@@ -73,13 +73,14 @@ class FreshInstall extends Component {
         var node_13 = document.createTextNode((new String("Let's get started")));
         node_12.appendChild(node_13);
 
-        var node_14 = document.createElement('BUTTON');
+        var node_14 = document.createElement('A');
+        node_14.setAttribute('target', '_blank');
+        node_14.setAttribute('href', 'https://github.com/kiliannnnn/ESP');
         node_14.setAttribute('class', 'bg-green-500 text-white p-3 rounded-lg shadow-xl transform hover:scale-105 transition-all duration-300');
         node_11.appendChild(node_14);
 
         var node_15 = document.createTextNode((new String("Learn More")));
         node_14.appendChild(node_15);
-
 
         // var node_1 = document.createElement('DIV');
         // node_1.setAttribute('class', 'flex center');
