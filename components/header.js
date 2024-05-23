@@ -2,35 +2,62 @@ class Header extends Component {
     constructor() {
         super();
         this.element = document.createElement('header');
-        this.element.innerHTML = '<h1>Framed</h1>';
-        this.element.classList.add('container', 'flex');
-        this.element.style.backgroundColor = 'var(--color-light)';
-        this.element.style.justifyContent = 'space-between';
+        this.element.classList.add('w-full', 'md:w-1/12', 'p-4', 'float-left', 'bg-zinc-100', 'dark:bg-zinc-900');
 
-        var div = document.createElement('div');
-        div.classList.add('flex');
+        var node_title = document.createElement('h1');
+        node_title.textContent = 'Framed';
+        node_title.classList.add('text-2xl', 'mb-4');
+        this.element.appendChild(node_title);
 
-        var nav = document.createElement('nav');
-        nav.classList.add('flex');
-        nav.style.backgroundColor = 'var(--color-light)';
-        nav.style.justifyContent = 'space-between';
-        nav.style.padding = '0 1rem';
+        var node_nav = new Nav();
+        this.element.appendChild(node_nav);
+
+
+        var node_1 = document.createElement('LABEL');
+        node_1.setAttribute('id', 'custom-checkbox-label');
+        node_1.setAttribute('for', 'theme');
+
+        var node_2 = document.createElement('INPUT');
+        node_2.setAttribute('id', 'theme');
+        node_2.setAttribute('type', 'checkbox');
+        node_1.appendChild(node_2);
+
+        var node_3 = document.createElement('SPAN');
+        node_3.setAttribute('class', 'custom-checkbox');
+        node_1.appendChild(node_3);
+
+        this.element.appendChild(node_1);
+    }
+
+    render() {
+        document.body.insertBefore(this.element, document.body.firstChild);
+        this.themeToggler();
+    }
+}
+
+class Nav extends Component {
+    constructor() {
+        super();
+        var node_main = document.createElement('nav');
+        node_main.classList.add('bg-zinc-100', 'dark:bg-zinc-900');
 
         // button clear cache
         var btnClearCache = document.createElement('button');
+        btnClearCache.classList.add('block', 'p-2', 'rounded', 'hover:bg-zinc-200', 'dark:hover:bg-zinc-600', 'w-full', 'flex', 'justify-center');
         btnClearCache.addEventListener('click', () => {
             localStorage.clear('config');
             window.location.reload();
         });
         btnClearCache.style.margin = '0';
         var logoPoubelle = document.createElement('img');
-        logoPoubelle.classList.add('icon');
+        logoPoubelle.classList.add('w-8', 'dark:invert');
         logoPoubelle.src = "assets/icons/bin-50.png";
         btnClearCache.appendChild(logoPoubelle);
-        nav.appendChild(btnClearCache);
+        node_main.appendChild(btnClearCache);
 
         // button home
         var btnHome = document.createElement('button');
+        btnHome.classList.add('block', 'p-2', 'rounded', 'hover:bg-zinc-200', 'dark:hover:bg-zinc-600', 'w-full', 'flex', 'justify-center');
         btnHome.addEventListener('click', () => {
             componentPriority = ["Header", "Dashboard", "Footer"];
             config.workspace.componentPriority = componentPriority;
@@ -39,13 +66,14 @@ class Header extends Component {
         });
         btnHome.style.margin = '0';
         var logoHome = document.createElement('img');
-        logoHome.classList.add('icon');
+        logoHome.classList.add('w-8', 'dark:invert');
         logoHome.src = "assets/icons/home-50.png";
         btnHome.appendChild(logoHome);
-        nav.appendChild(btnHome);
+        node_main.appendChild(btnHome);
 
         // button settings
         var btnSettings = document.createElement('button');
+        btnSettings.classList.add('block', 'p-2', 'rounded', 'hover:bg-zinc-200', 'dark:hover:bg-zinc-600', 'w-full', 'flex', 'justify-center');
         btnSettings.addEventListener('click', () => {
             componentPriority = ["Header", "Settings", "Footer"];
             config.workspace.componentPriority = componentPriority;
@@ -54,13 +82,14 @@ class Header extends Component {
         });
         btnSettings.style.margin = '0';
         var logoSettings = document.createElement('img');
-        logoSettings.classList.add('icon');
+        logoSettings.classList.add('w-8', 'dark:invert');
         logoSettings.src = "assets/icons/settings-50.png";
         btnSettings.appendChild(logoSettings);
-        nav.appendChild(btnSettings);
+        node_main.appendChild(btnSettings);
 
         // button pages
         var btnPages = document.createElement('button');
+        btnPages.classList.add('block', 'p-2', 'rounded', 'hover:bg-zinc-200', 'dark:hover:bg-zinc-600', 'w-full', 'flex', 'justify-center');
         btnPages.addEventListener('click', () => {
             componentPriority = ["Header", "Editor", "Footer"];
             config.workspace.componentPriority = componentPriority;
@@ -69,13 +98,14 @@ class Header extends Component {
         });
         btnPages.style.margin = '0';
         var logoPages = document.createElement('img');
-        logoPages.classList.add('icon');
+        logoPages.classList.add('w-8', 'dark:invert');
         logoPages.src = "assets/icons/page-50.png";
         btnPages.appendChild(logoPages);
-        nav.appendChild(btnPages);
+        node_main.appendChild(btnPages);
 
         // button export
         var btnExport = document.createElement('button');
+        btnExport.classList.add('block', 'p-2', 'rounded', 'hover:bg-zinc-200', 'dark:hover:bg-zinc-600', 'w-full', 'flex', 'justify-center');
         btnExport.addEventListener('click', () => {
             var text = editor.innerHTML;
             var blob = new Blob([text], { type: 'text/plain' });
@@ -88,114 +118,14 @@ class Header extends Component {
         });
         btnExport.style.margin = '0';
         var logoExport = document.createElement('img');
-        logoExport.classList.add('icon');
+        logoExport.classList.add('w-8', 'dark:invert');
         logoExport.src = "assets/icons/export-50.png";
         btnExport.appendChild(logoExport);
         if (componentPriority.includes("Editor")) {
-            nav.appendChild(btnExport);
+            node_main.appendChild(btnExport);
         }
 
-        this.element.appendChild(nav);
-    }
-
-    render() {
-        document.body.insertBefore(this.element, document.body.firstChild);
-    }
-}
-
-class Menu extends Component {
-    constructor() {
-        super();
-        this.element = document.createElement('nav');
-        this.element.classList.add('w-full', 'md:w-2/12', 'p-4', 'bg-white', 'dark:bg-zinc-700', 'dark:text-white', 'float-left');
-
-        // button clear cache
-        var btnClearCache = document.createElement('button');
-        btnClearCache.classList.add('block', 'p-2', 'rounded', 'hover:bg-zinc-200', 'dark:hover:bg-zinc-600', 'w-full');
-        btnClearCache.addEventListener('click', () => {
-            localStorage.clear('config');
-            window.location.reload();
-        });
-        btnClearCache.style.margin = '0';
-        var logoPoubelle = document.createElement('img');
-        logoPoubelle.classList.add('icon');
-        logoPoubelle.src = "assets/icons/bin-50.png";
-        btnClearCache.appendChild(logoPoubelle);
-        this.element.appendChild(btnClearCache);
-
-        // button home
-        var btnHome = document.createElement('button');
-        btnHome.classList.add('block', 'p-2', 'rounded', 'hover:bg-zinc-200', 'dark:hover:bg-zinc-600', 'w-full');
-        btnHome.addEventListener('click', () => {
-            componentPriority = ["Menu", "Dashboard", "Footer"];
-            config.workspace.componentPriority = componentPriority;
-            localStorage.setItem('config', JSON.stringify(config));
-            refreshDisplay();
-        });
-        btnHome.style.margin = '0';
-        var logoHome = document.createElement('img');
-        logoHome.classList.add('icon');
-        logoHome.src = "assets/icons/home-50.png";
-        btnHome.appendChild(logoHome);
-        this.element.appendChild(btnHome);
-
-        // button settings
-        var btnSettings = document.createElement('button');
-        btnSettings.classList.add('block', 'p-2', 'rounded', 'hover:bg-zinc-200', 'dark:hover:bg-zinc-600', 'w-full');
-        btnSettings.addEventListener('click', () => {
-            componentPriority = ["Menu", "Settings", "Footer"];
-            config.workspace.componentPriority = componentPriority;
-            localStorage.setItem('config', JSON.stringify(config));
-            refreshDisplay();
-        });
-        btnSettings.style.margin = '0';
-        var logoSettings = document.createElement('img');
-        logoSettings.classList.add('icon');
-        logoSettings.src = "assets/icons/settings-50.png";
-        btnSettings.appendChild(logoSettings);
-        this.element.appendChild(btnSettings);
-
-        // button pages
-        var btnPages = document.createElement('button');
-        btnPages.classList.add('block', 'p-2', 'rounded', 'hover:bg-zinc-200', 'dark:hover:bg-zinc-600', 'w-full');
-        btnPages.addEventListener('click', () => {
-            componentPriority = ["Menu", "Editor", "Footer"];
-            config.workspace.componentPriority = componentPriority;
-            localStorage.setItem('config', JSON.stringify(config));
-            refreshDisplay();
-        });
-        btnPages.style.margin = '0';
-        var logoPages = document.createElement('img');
-        logoPages.classList.add('icon');
-        logoPages.src = "assets/icons/page-50.png";
-        btnPages.appendChild(logoPages);
-        this.element.appendChild(btnPages);
-
-        // button export
-        var btnExport = document.createElement('button');
-        btnExport.classList.add('block', 'p-2', 'rounded', 'hover:bg-zinc-200', 'dark:hover:bg-zinc-600', 'w-full');
-        btnExport.addEventListener('click', () => {
-            var text = editor.innerHTML;
-            var blob = new Blob([text], { type: 'text/plain' });
-            var url = URL.createObjectURL(blob);
-            var a = document.createElement('a');
-            a.href = url;
-            a.download = 'index.html';
-            a.click();
-            URL.revokeObjectURL(url);
-        });
-        btnExport.style.margin = '0';
-        var logoExport = document.createElement('img');
-        logoExport.classList.add('icon');
-        logoExport.src = "assets/icons/export-50.png";
-        btnExport.appendChild(logoExport);
-        if (componentPriority.includes("Editor")) {
-            this.element.appendChild(btnExport);
-        }
-    }
-
-    render() {
-        document.body.insertBefore(this.element, document.body.firstChild);
+        return node_main
     }
 }
 

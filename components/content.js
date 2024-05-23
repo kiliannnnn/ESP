@@ -25,7 +25,7 @@ class FreshInstall extends Component {
         super();
 
         var node_1 = document.createElement('DIV');
-        node_1.setAttribute('class', 'container mx-auto p-8 h-svh flex flex-col justify-center items-center');
+        node_1.setAttribute('class', 'container p-8 h-svh flex flex-col justify-center items-center w-10/12');
 
         var node_2 = document.createElement('H1');
         node_2.setAttribute('class', 'text-4xl font-bold leading-tight text-center text-zinc-800 dark:text-white mb-4');
@@ -82,6 +82,9 @@ class FreshInstall extends Component {
         var node_15 = document.createTextNode((new String("Learn More")));
         node_14.appendChild(node_15);
 
+        var node_16 = document.createElement('div');
+        node_16.classList.add('w-1/12', 'h-full');
+
         // var node_1 = document.createElement('DIV');
         // node_1.setAttribute('class', 'flex center');
         // node_1.setAttribute('style', 'height: 100vh;');
@@ -125,6 +128,7 @@ class FreshInstall extends Component {
         // ------------------------------------------------------------------------------
         this.element = document.createElement('section');
         this.element.id = "FreshInstall";
+        this.element.classList.add('w-full', 'flex');
         this.element.appendChild(node_1);
     }
 

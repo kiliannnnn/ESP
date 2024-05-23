@@ -65,7 +65,7 @@ function renderComponent(component, container) {
 function removeComponent(component) {
     try {
         if (component) {
-            if (component === "Header" || component === "Menu") {
+            if (component === "Header") {
                 document.body.removeChild(document.body.firstChild)
             }
             if (component === "Footer") {

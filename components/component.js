@@ -2,7 +2,7 @@ class Component {
     render(container) {
         container.appendChild(this.element);
     }
-    
+
     // remove(container) {
     //     container.removeChild(this.element);
     // }
@@ -54,11 +54,27 @@ class Component {
             const container = document.getElementById('app');
             removeComponent(componentActiveList[0], container);
             componentActiveList.shift();
-            componentPriority = ["Menu", "Dashboard", "Footer"];
+            componentPriority = ["Header", "Dashboard", "Footer"];
             componentPriority.forEach(component => {
                 componentActiveList.push(component);
                 renderComponent(component, container);
             });
+        });
+    }
+
+    themeToggler() {
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.getElementById('theme').checked = true;
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        const toggleSwitch = document.getElementById('theme');
+        toggleSwitch.addEventListener('change', () => {
+            document.documentElement.classList.toggle('dark');
+            const isDarkMode = document.documentElement.classList.contains('dark');
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
         });
     }
 

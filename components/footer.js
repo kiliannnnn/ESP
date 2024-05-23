@@ -2,8 +2,7 @@ class Footer extends Component{
     constructor() {
         super();
         this.element = document.createElement('footer');
-        this.element.classList.add('container', 'flex');
-        this.element.style.backgroundColor = 'var(--color-light)';
+        this.element.classList.add('fixed', 'bottom-0', 'p-2', 'bg-zinc-100', 'dark:bg-zinc-900', 'w-full');
 
         var a = document.createElement('a');
         a.target = '_blank';
