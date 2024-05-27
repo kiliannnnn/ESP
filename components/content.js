@@ -163,7 +163,7 @@ class Editor extends Component {
         var rightAside = document.createElement('aside');
         rightAside.style.alignSelf = 'start';
         rightAside.style.gridArea = 'right-aside';
-        //rightAside.appendChild(new Tags());
+        rightAside.appendChild(new Tags());
         container.appendChild(rightAside);
 
         var page = document.createElement('div');
@@ -173,62 +173,11 @@ class Editor extends Component {
         var editor = document.createElement('div');
         editor.id = 'editor';
         editor.contentEditable = 'true';
+        editor.classList.add('border-2', 'border-zinc-500', 'border-dashed', 'p-4', 'm-4');
 
         page.appendChild(editor);
 
         this.element.appendChild(container);
-
-
-        // this.element = document.createElement('section');
-        // this.element.innerHTML = '<h1>Editor</h1>';
-
-        // var node_1 = document.createElement('DIV');
-        // this.element.appendChild(node_1);
-
-        // var node_2 = document.createElement('TEXTAREA');
-        // node_2.setAttribute('id', 'editor');
-        // node_2.setAttribute('class', 'width-100');
-        // node_2.setAttribute('rows', '10');
-        // node_2.setAttribute('style', 'margin: 10px;');
-        // node_1.appendChild(node_2);
-
-        // var node_3 = document.createElement('BUTTON');
-        // node_3.setAttribute('class', 'width-100 margin-auto');
-        // node_3.setAttribute('style', 'margin: 10px;');
-        // node_1.appendChild(node_3);
-
-        // var node_4 = document.createTextNode((new String("Save")));
-        // node_3.appendChild(node_4);
-
-        // var node_5 = document.createElement('DIV');
-        // node_5.setAttribute('class', 'flex center');
-        // node_5.setAttribute('style', 'height: 100vh;');
-        // node_1.appendChild(node_5);
-
-        // var node_6 = document.createElement('DIV');
-        // node_6.setAttribute('class', 'container border');
-        // node_6.setAttribute('style', 'margin: 10px;');
-        // node_5.appendChild(node_6);
-
-        // var node_7 = document.createElement('H1');
-        // node_7.setAttribute('class', 'txt-center');
-        // node_7.innerHTML = 'Editor';
-        // node_6.appendChild(node_7);
-
-        // var node_8 = document.createElement('P');
-        // node_8.innerText = "This is the editor page, you can write anything here.";
-        // node_6.appendChild(node_8);
-
-        // var node_9 = document.createElement('P');
-        // node_9.innerText = "It is saved in your browser cache and will be there when you come back.";
-        // node_6.appendChild(node_9);
-
-        // var node_10 = document.createElement('P');
-        // node_10.innerText = "You can switch to the pages manager to see the saved pages.";
-        // node_6.appendChild(node_10);
-
-        // var node_param = new ParamModes();
-        // node_6.appendChild(node_param);
     }
 }
 
@@ -245,7 +194,8 @@ class Settings extends Component {
         title.textContent = "Settings";
         this.element.appendChild(title);
 
-        this.element.appendChild(new ParamModes());
+        var node_param = new ParamModes();
+        this.element.appendChild(node_param);
     }
 
     render(container) {
@@ -254,140 +204,240 @@ class Settings extends Component {
     }
 }
 
+// class TextFormatter extends Component {
+//     constructor() {
+//         super();
+
+//         var node_1 = document.createElement('DIV');
+//         node_1.setAttribute('class', 'textFormatting');
+
+//         var node_2 = document.createElement('BUTTON');
+//         node_2.setAttribute('type', 'button');
+//         node_2.setAttribute('onclick', 'applyFormat(\'justifyLeft\')');
+//         node_1.appendChild(node_2);
+
+//         var node_3 = document.createElement('img');
+//         node_3.src = 'assets/icons/align-left-50.png';
+//         node_3.classList.add('dark:invert', 'w-8');
+//         node_2.appendChild(node_3);
+
+//         var node_4 = document.createElement('BUTTON');
+//         node_4.setAttribute('type', 'button');
+//         node_4.setAttribute('onclick', 'applyFormat(\'justifyCenter\')');
+//         node_1.appendChild(node_4);
+
+//         var node_5 = document.createElement('img');
+//         node_5.src = 'assets/icons/align-center-50.png';
+//         node_5.classList.add('dark:invert', 'w-8');
+//         node_4.appendChild(node_5);
+
+//         var node_6 = document.createElement('BUTTON');
+//         node_6.setAttribute('type', 'button');
+//         node_6.setAttribute('onclick', 'applyFormat(\'justifyRight\')');
+//         node_1.appendChild(node_6);
+
+//         var node_7 = document.createElement('img');
+//         node_7.src = 'assets/icons/align-right-50.png';
+//         node_7.classList.add('dark:invert', 'w-8');
+//         node_6.appendChild(node_7);
+
+//         var node_8 = document.createElement('BUTTON');
+//         node_8.setAttribute('type', 'button');
+//         node_8.setAttribute('onclick', 'applyFormat(\'justifyFull\')');
+//         node_1.appendChild(node_8);
+
+//         var node_9 = document.createElement('img');
+//         node_9.src = 'assets/icons/text-justify-50.png';
+//         node_9.classList.add('dark:invert', 'w-8');
+//         node_8.appendChild(node_9);
+
+//         var node_10 = document.createElement('BUTTON');
+//         node_10.setAttribute('type', 'button');
+//         node_10.setAttribute('onclick', 'applyFormat(\'insertOrderedList\')');
+//         node_1.appendChild(node_10);
+//         // node_10.appendChild(new SVGOrderedList());
+
+//         var node_11 = document.createElement('img');
+//         node_11.src = 'assets/icons/ordered-list-32.png';
+//         node_11.classList.add('dark:invert', 'w-8');
+//         node_10.appendChild(node_11);
+
+//         var node_12 = document.createElement('BUTTON');
+//         node_12.setAttribute('type', 'button');
+//         node_12.setAttribute('onclick', 'applyFormat(\'insertUnorderedList\')');
+//         node_1.appendChild(node_12);
+//         // node_12.appendChild(new SVGUnorderedList());
+
+//         var node_13 = document.createElement('img');
+//         node_13.src = 'assets/icons/unordered-list-32.png';
+//         node_13.classList.add('dark:invert', 'w-8');
+//         node_12.appendChild(node_13);
+
+//         var node_14 = document.createElement('BUTTON');
+//         node_14.setAttribute('type', 'button');
+//         node_14.setAttribute('onclick', 'applyFormat(\'indent\')');
+//         node_1.appendChild(node_14);
+
+//         var node_15 = document.createTextNode((new String("Indent")));
+//         node_14.appendChild(node_15);
+
+//         var node_16 = document.createElement('BUTTON');
+//         node_16.setAttribute('type', 'button');
+//         node_16.setAttribute('onclick', 'applyFormat(\'outdent\')');
+//         node_1.appendChild(node_16);
+
+//         var node_17 = document.createTextNode((new String("Outdent")));
+//         node_16.appendChild(node_17);
+
+//         var node_18 = document.createElement('BUTTON');
+//         node_18.setAttribute('type', 'button');
+//         node_18.setAttribute('onclick', 'applyFormat(\'insertParagraph\')');
+//         node_1.appendChild(node_18);
+
+//         var node_19 = document.createTextNode((new String("New Line")));
+//         node_18.appendChild(node_19);
+
+//         var node_20 = document.createElement('BUTTON');
+//         node_20.setAttribute('type', 'button');
+//         node_20.setAttribute('onclick', 'applyFormat(\'insertHorizontalRule\')');
+//         node_1.appendChild(node_20);
+
+//         var node_21 = document.createTextNode((new String("Horizontal Line")));
+//         node_20.appendChild(node_21);
+
+//         var node_22 = document.createElement('BUTTON');
+//         node_22.setAttribute('type', 'button');
+//         node_22.setAttribute('onclick', 'applyFormat(\'removeFormat\')');
+//         node_1.appendChild(node_22);
+
+//         var node_23 = document.createTextNode((new String("Remove Format")));
+//         node_22.appendChild(node_23);
+
+//         var node_24 = document.createElement('BUTTON');
+//         node_24.setAttribute('type', 'button');
+//         node_24.setAttribute('onclick', 'applyFormat(\'bold\')');
+//         node_1.appendChild(node_24);
+
+//         var node_25 = document.createTextNode((new String("Bold")));
+//         node_24.appendChild(node_25);
+
+//         var node_26 = document.createElement('BUTTON');
+//         node_26.setAttribute('type', 'button');
+//         node_26.setAttribute('onclick', 'applyFormat(\'italic\')');
+//         node_1.appendChild(node_26);
+
+//         var node_27 = document.createTextNode((new String("Italic")));
+//         node_26.appendChild(node_27);
+
+//         var node_28 = document.createElement('BUTTON');
+//         node_28.setAttribute('type', 'button');
+//         node_28.setAttribute('onclick', 'applyFormat(\'underline\')');
+//         node_1.appendChild(node_28);
+
+//         var node_29 = document.createTextNode((new String("Underline")));
+//         node_28.appendChild(node_29);
+
+//         var fontSizeSelect = document.createElement('select');
+//         fontSizeSelect.id = 'font-size-select';
+//         const fontSizes = ['10px', '12px', '14px', '16px', '18px', '20px', '24px', '28px', '32px'];
+//         fontSizes.forEach(size => {
+//             var option = document.createElement('option');
+//             option.value = size;
+//             option.textContent = size;
+//             fontSizeSelect.appendChild(option);
+//         });
+//         fontSizeSelect.addEventListener('change', (event) => {
+//             applyFontSize(event.target.value);
+//         });
+//         node_1.appendChild(fontSizeSelect);
+
+//         return node_1;
+//     }
+// }
+
+
 class TextFormatter extends Component {
     constructor() {
         super();
 
         var node_1 = document.createElement('DIV');
-        node_1.setAttribute('class', 'textFormatting');
+        node_1.setAttribute('class', 'textFormatting flex flex-wrap gap-2 p-4 bg-gray-100 rounded shadow-md dark:bg-zinc-900');
 
-        var node_2 = document.createElement('BUTTON');
-        node_2.setAttribute('type', 'button');
-        node_2.setAttribute('onclick', 'applyFormat(\'justifyLeft\')');
-        node_1.appendChild(node_2);
+        var alignmentDropdown = this.createDropdown('Align', [
+            { command: 'justifyLeft', icon: 'assets/icons/align-left-50.png', text: 'Left' },
+            { command: 'justifyCenter', icon: 'assets/icons/align-center-50.png', text: 'Center' },
+            { command: 'justifyRight', icon: 'assets/icons/align-right-50.png', text: 'Right' },
+            { command: 'justifyFull', icon: 'assets/icons/text-justify-50.png', text: 'Justify' }
+        ]);
+        node_1.appendChild(alignmentDropdown);
 
-        var node_3 = document.createElement('img');
-        node_3.src = 'assets/icons/align-left-50.png';
-        node_3.classList.add('dark:invert', 'w-8');
-        node_2.appendChild(node_3);
+        var formatDropdown = this.createDropdown('Format', [
+            { command: 'bold', text: 'Bold' },
+            { command: 'italic', text: 'Italic' },
+            { command: 'underline', text: 'Underline' }
+        ]);
+        node_1.appendChild(formatDropdown);
 
-        var node_4 = document.createElement('BUTTON');
-        node_4.setAttribute('type', 'button');
-        node_4.setAttribute('onclick', 'applyFormat(\'justifyCenter\')');
-        node_1.appendChild(node_4);
+        var listDropdown = this.createDropdown('List', [
+            { command: 'insertOrderedList', icon: 'assets/icons/ordered-list-32.png', text: 'Ordered List' },
+            { command: 'insertUnorderedList', icon: 'assets/icons/unordered-list-32.png', text: 'Unordered List' }
+        ]);
+        node_1.appendChild(listDropdown);
 
-        var node_5 = document.createElement('img');
-        node_5.src = 'assets/icons/align-center-50.png';
-        node_5.classList.add('dark:invert', 'w-8');
-        node_4.appendChild(node_5);
+        var fontSizeSelect = document.createElement('select');
+        fontSizeSelect.id = 'font-size-select';
+        fontSizeSelect.classList.add('p-2', 'bg-white', 'rounded', 'shadow', 'hover:bg-gray-200', 'dark:bg-gray-800', 'dark:text-white', 'hover:dark:bg-gray-700');
+        const fontSizes = ['10px', '12px', '14px', '16px', '18px', '20px', '24px', '28px', '32px'];
+        fontSizes.forEach(size => {
+            var option = document.createElement('option');
+            option.value = size;
+            option.textContent = size;
+            fontSizeSelect.appendChild(option);
+        });
+        fontSizeSelect.addEventListener('change', (event) => {
+            applyFontSize(event.target.value);
+        });
+        node_1.appendChild(fontSizeSelect);
 
-        var node_6 = document.createElement('BUTTON');
-        node_6.setAttribute('type', 'button');
-        node_6.setAttribute('onclick', 'applyFormat(\'justifyRight\')');
-        node_1.appendChild(node_6);
+        var newLineButton = this.createButton('New Line', 'insertParagraph');
+        node_1.appendChild(newLineButton);
 
-        var node_7 = document.createElement('img');
-        node_7.src = 'assets/icons/align-right-50.png';
-        node_7.classList.add('dark:invert', 'w-8');
-        node_6.appendChild(node_7);
+        var horizontalLineButton = this.createButton('Horizontal Line', 'insertHorizontalRule');
+        node_1.appendChild(horizontalLineButton);
 
-        var node_8 = document.createElement('BUTTON');
-        node_8.setAttribute('type', 'button');
-        node_8.setAttribute('onclick', 'applyFormat(\'justifyFull\')');
-        node_1.appendChild(node_8);
+        var indentButton = this.createButton('Indent', 'indent');
+        node_1.appendChild(indentButton);
 
-        var node_9 = document.createElement('img');
-        node_9.src = 'assets/icons/text-justify-50.png';
-        node_9.classList.add('dark:invert', 'w-8');
-        node_8.appendChild(node_9);
+        var outdentButton = this.createButton('Outdent', 'outdent');
+        node_1.appendChild(outdentButton);
 
-        var node_10 = document.createElement('BUTTON');
-        node_10.setAttribute('type', 'button');
-        node_10.setAttribute('onclick', 'applyFormat(\'insertOrderedList\')');
-        node_1.appendChild(node_10);
-        // node_10.appendChild(new SVGOrderedList());
+        var removeFormatButton = document.createElement('button');
+        removeFormatButton.setAttribute('type', 'button');
+        removeFormatButton.setAttribute('onclick', "applyFormat('removeFormat')");
+        removeFormatButton.classList.add('p-2', 'bg-red-500', 'text-white', 'rounded', 'shadow', 'hover:bg-red-600');
+        
+        var removeFormatText = document.createTextNode('Remove Format');
+        removeFormatButton.appendChild(removeFormatText);
+        node_1.appendChild(removeFormatButton);
 
-        var node_11 = document.createElement('img');
-        node_11.src = 'assets/icons/ordered-list-32.png';
-        node_11.classList.add('dark:invert', 'w-8');
-        node_10.appendChild(node_11);
-
-        var node_12 = document.createElement('BUTTON');
-        node_12.setAttribute('type', 'button');
-        node_12.setAttribute('onclick', 'applyFormat(\'insertUnorderedList\')');
-        node_1.appendChild(node_12);
-        // node_12.appendChild(new SVGUnorderedList());
-
-        var node_13 = document.createElement('img');
-        node_13.src = 'assets/icons/unordered-list-32.png';
-        node_13.classList.add('dark:invert', 'w-8');
-        node_12.appendChild(node_13);
-
-        var node_14 = document.createElement('BUTTON');
-        node_14.setAttribute('type', 'button');
-        node_14.setAttribute('onclick', 'applyFormat(\'indent\')');
-        node_1.appendChild(node_14);
-
-        var node_15 = document.createTextNode((new String("Indent")));
-        node_14.appendChild(node_15);
-
-        var node_16 = document.createElement('BUTTON');
-        node_16.setAttribute('type', 'button');
-        node_16.setAttribute('onclick', 'applyFormat(\'outdent\')');
-        node_1.appendChild(node_16);
-
-        var node_17 = document.createTextNode((new String("Outdent")));
-        node_16.appendChild(node_17);
-
-        var node_18 = document.createElement('BUTTON');
-        node_18.setAttribute('type', 'button');
-        node_18.setAttribute('onclick', 'applyFormat(\'insertParagraph\')');
-        node_1.appendChild(node_18);
-
-        var node_19 = document.createTextNode((new String("New Line")));
-        node_18.appendChild(node_19);
-
-        var node_20 = document.createElement('BUTTON');
-        node_20.setAttribute('type', 'button');
-        node_20.setAttribute('onclick', 'applyFormat(\'insertHorizontalRule\')');
-        node_1.appendChild(node_20);
-
-        var node_21 = document.createTextNode((new String("Horizontal Line")));
-        node_20.appendChild(node_21);
-
-        var node_22 = document.createElement('BUTTON');
-        node_22.setAttribute('type', 'button');
-        node_22.setAttribute('onclick', 'applyFormat(\'removeFormat\')');
-        node_1.appendChild(node_22);
-
-        var node_23 = document.createTextNode((new String("Remove Format")));
-        node_22.appendChild(node_23);
-
-        var node_24 = document.createElement('BUTTON');
-        node_24.setAttribute('type', 'button');
-        node_24.setAttribute('onclick', 'applyFormat(\'bold\')');
-        node_1.appendChild(node_24);
-
-        var node_25 = document.createTextNode((new String("Bold")));
-        node_24.appendChild(node_25);
-
-        var node_26 = document.createElement('BUTTON');
-        node_26.setAttribute('type', 'button');
-        node_26.setAttribute('onclick', 'applyFormat(\'italic\')');
-        node_1.appendChild(node_26);
-
-        var node_27 = document.createTextNode((new String("Italic")));
-        node_26.appendChild(node_27);
-
-        var node_28 = document.createElement('BUTTON');
-        node_28.setAttribute('type', 'button');
-        node_28.setAttribute('onclick', 'applyFormat(\'underline\')');
-        node_1.appendChild(node_28);
-
-        var node_29 = document.createTextNode((new String("Underline")));
-        node_28.appendChild(node_29);
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.dropdown-button') && !event.target.closest('.dropdown-menu')) {
+                this.closeAllDropdowns();
+            }
+        });
 
         return node_1;
+    }
+
+    toggleDropdown(menu) {
+        menu.classList.toggle('hidden');
+    }
+
+    closeAllDropdowns() {
+        var menus = document.querySelectorAll('.dropdown-menu');
+        menus.forEach(menu => {
+            menu.classList.add('hidden');
+        });
     }
 }
 
@@ -395,11 +445,29 @@ class Tags extends Component {
     constructor() {
         super();
 
+        var node_1 = document.createElement('DIV');
+        node_1.classList.add('flex', 'flex-wrap', 'gap-2', 'p-4', 'bg-gray-100', 'rounded', 'shadow-md', 'dark:bg-zinc-900');
 
+        const textFormats = [
+            { label: 'Title', format: 'title' },
+            { label: 'Subtitle', format: 'subtitle' },
+            { label: 'Paragraph', format: 'paragraph' },
+        ];
+
+        textFormats.forEach(format => {
+            var button = this.createButton(format.label, format.format);
+            button.addEventListener('click', () => this.applyFormat(format.format));
+            node_1.appendChild(button);
+        });
 
         return node_1;
     }
 }
+
+
+
+
+
 
 class ParamModes extends Component {
     constructor() {
@@ -427,7 +495,8 @@ class ParamModes extends Component {
         var node_6 = document.createElement('INPUT');
         node_6.setAttribute('type', 'radio');
         node_6.setAttribute('name', 'debug');
-        node_6.setAttribute('id', 'no-debug');
+        node_6.setAttribute('value', 'no-debug');
+        node_6.id = "no-debug";
         node_6.setAttribute('checked', '');
         node_5.appendChild(node_6);
 
@@ -446,7 +515,8 @@ class ParamModes extends Component {
         var node_10 = document.createElement('INPUT');
         node_10.setAttribute('type', 'radio');
         node_10.setAttribute('name', 'debug');
-        node_10.setAttribute('id', 'debug');
+        node_10.setAttribute('value', 'debug');
+        node_10.id = "debug"
         node_9.appendChild(node_10);
 
         var node_11 = document.createElement('SPAN');
@@ -464,7 +534,8 @@ class ParamModes extends Component {
         var node_14 = document.createElement('INPUT');
         node_14.setAttribute('type', 'radio');
         node_14.setAttribute('name', 'debug');
-        node_14.setAttribute('id', 'verbose');
+        node_14.setAttribute('value', 'verbose');
+        node_14.id = "verbose";
         node_13.appendChild(node_14);
 
         var node_15 = document.createElement('SPAN');
@@ -493,8 +564,9 @@ class ParamModes extends Component {
         var node_21 = document.createElement('INPUT');
         node_21.setAttribute('type', 'radio');
         node_21.setAttribute('name', 'mode');
-        node_21.setAttribute('id', 'mode-light');
+        node_21.setAttribute('value', 'mode-light');
         node_21.setAttribute('checked', '');
+        node_21.id = "mode-light";
         node_20.appendChild(node_21);
 
         var node_22 = document.createElement('SPAN');
@@ -512,7 +584,8 @@ class ParamModes extends Component {
         var node_25 = document.createElement('INPUT');
         node_25.setAttribute('type', 'radio');
         node_25.setAttribute('name', 'mode');
-        node_25.setAttribute('id', 'mode-complete');
+        node_25.setAttribute('value', 'mode-complete');
+        node_25.id = "mode-complete";
         node_24.appendChild(node_25);
 
         var node_26 = document.createElement('SPAN');
@@ -541,8 +614,9 @@ class ParamModes extends Component {
         var node_32 = document.createElement('INPUT');
         node_32.setAttribute('type', 'radio');
         node_32.setAttribute('name', 'editor');
-        node_32.setAttribute('id', 'editor-basic');
+        node_32.setAttribute('value', 'editor-basic');
         node_32.setAttribute('checked', '');
+        node_32.id = "editor-basic";
         node_31.appendChild(node_32);
 
         var node_33 = document.createElement('SPAN');
@@ -560,7 +634,8 @@ class ParamModes extends Component {
         var node_36 = document.createElement('INPUT');
         node_36.setAttribute('type', 'radio');
         node_36.setAttribute('name', 'editor');
-        node_36.setAttribute('id', 'editor-advanced');
+        node_36.setAttribute('value', 'editor-advanced');
+        node_36.id = "editor-advanced";
         node_35.appendChild(node_36);
 
         var node_37 = document.createElement('SPAN');

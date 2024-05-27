@@ -19,7 +19,7 @@ class Component {
             element.addEventListener('change', () => {
                 config.options.debug = element.value;
                 localStorage.setItem('config', JSON.stringify(config));
-                // console.log(JSON.parse(localStorage.getItem('config')));
+                console.log(JSON.parse(localStorage.getItem('config')));
             });
         });
 
@@ -30,7 +30,7 @@ class Component {
             element.addEventListener('change', () => {
                 config.options.mode = element.value;
                 localStorage.setItem('config', JSON.stringify(config));
-                // console.log(JSON.parse(localStorage.getItem('config')));
+                console.log(JSON.parse(localStorage.getItem('config')));
             });
         });
 
@@ -41,7 +41,7 @@ class Component {
             element.addEventListener('change', () => {
                 config.options.editor = element.value;
                 localStorage.setItem('config', JSON.stringify(config));
-                // console.log(JSON.parse(localStorage.getItem('config')));
+                console.log(JSON.parse(localStorage.getItem('config')));
             });
         });
     }
@@ -107,5 +107,111 @@ class Component {
             option.textContent = page;
             select.appendChild(option);
         });
+    }
+
+    createDropdown(label, options) {
+        var dropdown = document.createElement('div');
+        dropdown.classList.add('relative', 'inline-block', 'text-left');
+
+        var button = document.createElement('button');
+        button.classList.add('dropdown-button', 'p-2', 'bg-blue-500', 'text-white', 'rounded', 'shadow', 'hover:bg-blue-600', 'flex', 'items-center', 'space-x-2');
+        button.textContent = label;
+
+        var menu = document.createElement('div');
+        menu.classList.add('dropdown-menu', 'hidden', 'origin-top-right', 'absolute', 'right-0', 'mt-2', 'w-56', 'rounded-md', 'shadow-lg', 'bg-white', 'ring-1', 'ring-black', 'ring-opacity-5', 'divide-y', 'divide-gray-100', 'focus:outline-none', 'dark:bg-gray-800');
+
+        button.addEventListener('click', (event) => {
+            event.stopPropagation();
+            this.toggleDropdown(menu);
+        });
+
+        options.forEach(option => {
+            var optionButton = document.createElement('button');
+            optionButton.setAttribute('type', 'button');
+            optionButton.setAttribute('onclick', `applyFormat('${option.command}')`);
+            optionButton.classList.add('group', 'flex', 'items-center', 'w-full', 'px-4', 'py-2', 'text-sm', 'text-gray-700', 'hover:bg-gray-100', 'dark:text-white', 'dark:hover:bg-gray-700');
+
+            if (option.icon) {
+                var img = document.createElement('img');
+                img.src = option.icon;
+                img.classList.add('dark:invert', 'w-8', 'mr-3');
+                optionButton.appendChild(img);
+            }
+
+            var textNode = document.createTextNode(option.text);
+            optionButton.appendChild(textNode);
+            menu.appendChild(optionButton);
+        });
+
+        dropdown.appendChild(button);
+        dropdown.appendChild(menu);
+        return dropdown;
+    }
+
+    createButton(label, command) {
+        var button = document.createElement('button');
+        button.setAttribute('type', 'button');
+        button.setAttribute('onclick', `applyFormat('${command}')`);
+        button.classList.add('p-2', 'bg-white', 'rounded', 'shadow', 'hover:bg-gray-200', 'dark:bg-gray-800', 'dark:text-white', 'hover:dark:bg-gray-700');
+        
+        var textNode = document.createTextNode(label);
+        button.appendChild(textNode);
+
+        return button;
+    }
+
+    applyFormat(command, value = null) {
+        if (value === null) {
+            this.execCommandWithHTML(command);
+        } else {
+            this.execCommandWithHTML(command, value);
+        }
+    }
+    
+    execCommandWithHTML(command, value) {
+        if (command == 'title') {
+            this.applyFormat('underline');
+            this.applyFormat('justifyCenter');
+            this.applyFontSize('24px');
+            return;
+        }
+        if (command == 'subtitle') {
+            this.applyFormat('underline');
+            this.applyFormat('justifyLeft');
+            this.applyFontSize('20px');
+            return;
+        }
+        if (command == 'paragraph') {
+            this.applyFormat('justifyFull');
+            this.applyFontSize('14px');
+            return;
+        }
+        document.execCommand('formatBlock', true, 'div');
+        document.execCommand(command, true, value);
+    }
+    
+    applyFontSize(size) {
+        document.execCommand('fontSize', false, '7');
+        const elements = document.querySelectorAll('font[size="7"]');
+        elements.forEach(element => {
+            element.removeAttribute('size');
+            element.style.fontSize = size;
+        });
+    }
+    
+    addTag(tag) {
+        const selection = document.getSelection();
+        const range = selection.getRangeAt(0);
+        
+        const newTag = document.createElement(tag);
+        newTag.innerHTML = selection.toString();
+    
+        range.deleteContents();
+        range.insertNode(newTag);
+    
+        range.setStartAfter(newTag);
+        range.collapse(true);
+        selection.removeAllRanges();
+        selection.addRange(range);
     }
 }

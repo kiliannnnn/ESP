@@ -1,9 +1,3 @@
-// window.onload = () => {
-//     componentsPath = 'vendor/components/';
-
-//     document.childNodes[1].appendChild(document.createElement('script')).setAttribute('src', componentsPath.concat('header.js'));
-// };
-
 document.addEventListener('loadstart', function () {
     if (localStorage.getItem('config') == null) {
         localStorage.setItem('config', JSON.stringify(config));
@@ -40,17 +34,26 @@ document.addEventListener('loadstart', function () {
 //     return output;
 // }
 
-function execCommandWithHTML(command, value) {
-    document.execCommand('formatBlock', true, 'div');
-    document.execCommand(command, true, value);
-}
-
 function applyFormat(command, value = null) {
     if (value === null) {
         execCommandWithHTML(command);
     } else {
         execCommandWithHTML(command, value);
     }
+}
+
+function execCommandWithHTML(command, value) {
+    document.execCommand('formatBlock', true, 'div');
+    document.execCommand(command, true, value);
+}
+
+function applyFontSize(size) {
+    document.execCommand('fontSize', false, '7');
+    const elements = document.querySelectorAll('font[size="7"]');
+    elements.forEach(element => {
+        element.removeAttribute('size');
+        element.style.fontSize = size;
+    });
 }
 
 function addTag(tag) {
