@@ -1,5 +1,8 @@
 # Framed
 
+This project is deprecated. I created it as a final exam. The unique feature of this project is that it has no dependencies or even a Node environment. It only requires a browser with JavaScript enabled. This restriction is more of a challenge than a necessity, but it has been instructive. I don't plan to work on a CMS or site-builder type project again because the alternatives today are sufficient. However, I am working on libraries that you can find on npm and in my repositories.
+I'm leaving the contents of the readme intact for the curious.
+
 Framed is a lightweight site builder built with HTML, CSS, and JavaScript. It leverages Tailwind CSS for styling and manipulates the DOM extensively to provide a seamless user experience. Designed for simplicity, Framed requires no additional environment or dependencies, ***simply a web browser with JavaScript enabled.***
 
 ## Table of Contents
